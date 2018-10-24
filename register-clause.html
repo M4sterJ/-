@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三星账户</title>
+	<link rel="stylesheet" href="css/Register-clause.css">
+</head>
+<body>
+	<div class="clauseleft">
+		<h2>三星账户</h2>
+		<b>创建三星账户</b>
+		<a href="" style="font-weight: 800;">探索更多三星服务 ></a>
+		<script src = 'js/jquery-1.11.3.js'></script>
+		<script src = 'js/jquery-1.10.1.min.js'></script>
+		<script type="text/javascript">
+			$(function(){
+				
+					$('input[name="checkall"]').click(function(){
+						if($('input[name="checkall"]').is(':checked')){
+							$('input[name="checkbox"]').prop("checked", true);
+							$("#btn1").css('opacity','1');
+						}else{
+							$('input[name="checkbox"]').prop("checked", false);
+							$("#btn1").css('opacity','0.3');
+						}
+				})
+					$('input[name="checkbox"]').click(function(){
+						if (($("input[type='checkbox']:checked").length)>=4) {
+							$("#btn1").css('opacity','1');
+						}else{
+							$("#btn1").css('opacity','0.3');
+						}
+					})
+				
+			})
+		</script>
+
+	</div>
+	<div class="clauseright">
+		<p id="p1">点击以下链接并仔细阅读。通过勾选复选框，即表示您确认已阅读并同意以下条款：</p>
+		<div>
+			<p><input type="checkbox" name="checkall">
+			<span style="font-weight: 800;">我同意全部条款</span></p>
+			<p><input type="checkbox" name="checkbox">
+			<a href=""></a><span>以及</span><a href="">特殊条款</a></p>
+			<p><input type="checkbox" name="checkbox">
+			<span>我同意</span><a href="">三星隐私条款</a></p>
+			<p><input type="checkbox" name="checkbox">
+			<a href="">敏感个人信息的收集和使用</a></p>
+			<p><input type="checkbox" name="checkbox">
+			<a href="">其他个人信息处理</a></p>
+			<p><input type="checkbox" name="checkbox">
+			<span>启用</span><a href="">个性化服务</a><span>(可选)</span></p>
+		</div>
+			<button href='' id="btn1" style="background:blue;opacity: 0.3;color:#fff;">同意</button>
+			<button onclick="location.href='LoginRegister.html'" id="btn2">拒绝</button>
+	</div>
+	<div class="footer">
+		<span class="footerleft">
+			<a href="">条款和条件 |</a>
+			<a href="">三星隐私权政策 |</a>
+			<a href="">联系我们</a>
+		</span>
+		<span id="footerright">
+			© Samsung Electronics Co., Ltd.
+		</span>
+	</div>
+</body>
+</html>

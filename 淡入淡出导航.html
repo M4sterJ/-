@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		    var iNow = -1 ;
+            var timer = null;
+            var oOl = $('.containerbody').find('ol');
+            oOl.on('click','li',function(){
+                iNow = $(this).index();
+                // tabContainer();
+                $('.containerbody ul li').stop().animate({
+                    opacity : 0
+                },1000)
+                $('.containerbody ul li').eq(iNow).stop().animate({
+                    opacity : 1
+                },1000)
+                $('.containerbody ol li').attr('class','').eq(iNow).attr('class','active');
+            })
+
+            timer = setInterval(timerInner,4000);
+            $('.containerbody').hover(function(){
+                clearInterval(timer);
+            },function(){
+                timer = setInterval(timerInner,4000);
+            })
+
+            function timerInner(){
+                iNow++;
+                tabContainer();
+            }
+
+            function tabContainer(){
+                $('.containerbody ol li').attr('class','').eq(iNow).attr('class','active');
+                $('.containerbody ul li').eq(iNow).stop().animate({
+                    opacity : 0
+                },1000,function(){
+                    if(iNow ==  $(".containerbody ul li").size() -1){
+                        iNow = -1;
+                        $('.containerbody ul li').stop().animate({
+                            opacity : 1
+                        },1000)
+                    }
+                })
+            }
+
+            $('.containerbody .slider-left').click(function(){
+                $('.containerbody ol li').attr('class','').eq(iNow -1).attr('class','active');
+                $('.containerbody ul li').stop().animate({
+                    opacity : 0
+                },1000)
+                $('.containerbody ul li').eq(iNow -1).stop().animate({
+                    opacity : 1
+                },1000)
+                iNow--;
+                if(iNow == -1){
+                    iNow = 6;
+                }
+            })
+            $('.containerbody .slider-right').click(function(){
+                $('.containerbody ol li').attr('class','').eq(iNow +1).attr('class','active');
+                $('.containerbody ul li').stop().animate({
+                    opacity : 0
+                },1000)
+                $('.containerbody ul li').eq(iNow +1).stop().animate({
+                    opacity : 1
+                },1000)
+                iNow++;
+                if(iNow == 6){
+                    iNow = -1;
+                }
+            })
+
+	</script>
+</head>
+<body>
+	 <div class="container">
+            <div class="containerbody">
+                <ul>
+
+                </ul>
+                <div class="slider-left"></div>
+                <div class="slider-right"></div>
+                <ol>
+
+                </ol>
+            </div>
+        </div>
+        <div class="body">
+            <div class="activity-list">
+
+            </div>
+        </div>
+</body>
+</html>
